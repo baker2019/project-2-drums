@@ -95,3 +95,22 @@ const invert = (drumType) => {
 	} // end drumType switch
 }// end invert
 
+
+// Select multiple synthesizer tones at once
+const getNeighborPads = (x, y, size) => {
+
+	let neighborsArray = [[x, y-1], [x-1, y], [x, y+1], [x+1, y]];
+	let synthArray = [];
+	// validate coordinates
+	if ((x > size -1 || x < 0) || (y > size -1 || y < 0)) {
+		return synthArray;
+	}
+	neighborsArray.forEach(function(el){
+		if ((el[0] > -1 && el[0] < size) && (el[1] > -1 && el[1] < size)) {
+			synthArray.push(el);
+		}
+		
+	});
+	return synthArray;
+
+}// end getNeighborPads
